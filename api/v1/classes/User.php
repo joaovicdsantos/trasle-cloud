@@ -30,11 +30,11 @@ class User
 
         // Insert
         $stmt = DB::prepare("INSERT INTO Users (Username, Company, Email, API_KEY, Directory) VALUES (:username, :company, :email, :api_key, :directory)");
-        $stmt->bindValue(':username', $username);
-        $stmt->bindValue(':company', $company);
-        $stmt->bindValue(':email', $email);
-        $stmt->bindValue(':api_key', $api_key);
-        $stmt->bindValue(':directory', $directory_name);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':company', $company);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':api_key', $api_key);
+        $stmt->bindParam(':directory', $directory_name);
         $stmt->execute();
 
         // Create directory

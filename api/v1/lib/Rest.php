@@ -20,11 +20,14 @@ class Rest
         $params = $url;
 
         $body = json_decode(file_get_contents("php://input"), true);
-
+        
+        $post = $_POST;
+        $files = $_FILES;
+        
         try {
             if (class_exists($class)) {
                 if (method_exists($class, $method)) {
-                    $res = call_user_func_array(array(new $class, $method), array($params, $body));
+                    $res = call_user_func_array(array(new $class, $method), array($params, $body, $post, $files));
                     return json_encode(array('status' => 'success', 'data' => $res));
                 } else {
                     return json_encode(array('status' => 'erro', 'data' => 'This method does not exist'));
