@@ -42,6 +42,6 @@ class User
             return 'Failed to create directory.';
         }
 
-        return array('message' => 'Registered.', 'api_key' => $api_key);
+        return array('message' => 'Registered.', 'api_key' => $api_key, 'diretory' => $directory_name);
     }
 }
