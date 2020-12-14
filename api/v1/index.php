@@ -4,7 +4,7 @@ header('Content-Type: application/json; charset=utf-8');
 
 
 // Import Classes
-
+require_once('./classes/User.php');
 
 // Import Rest Class
 require_once('./lib/Rest.php');
