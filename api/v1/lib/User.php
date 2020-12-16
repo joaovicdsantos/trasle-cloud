@@ -28,8 +28,6 @@ class User
         // Generating the directory name
         $directory_name = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $company)));
 
-        Mail::sendApiData($username, $email, $api_key, $directory_name);
-
         // Insert
         $stmt = DB::prepare("INSERT INTO Users (Username, Company, Email, API_KEY, Directory) VALUES (:username, :company, :email, :api_key, :directory)");
         $stmt->bindParam(':username', $username);
@@ -39,9 +37,12 @@ class User
         $stmt->bindParam(':directory', $directory_name);
         $stmt->execute();
 
+        // Sending email
+        Mail::sendApiData($username, $email, $api_key, $directory_name);
+
         // Create directory
         if(!mkdir('../../cloud/'. $directory_name, 0777, true)){
-            return 'Failed to create directory.';
+            return 'Failed to create directory. Please contact the developer.';
         }
 
         return array('message' => 'Registered.', 'api_key' => $api_key, 'diretory' => $directory_name);

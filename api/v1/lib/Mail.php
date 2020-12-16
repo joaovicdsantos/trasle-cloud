@@ -1,10 +1,9 @@
 <?php
 
-require_once(__DIR__.'/PHPMailer/class.phpmailer.php');
-require_once(__DIR__.'/PHPMailer/class.smtp.php');
-require_once(__DIR__.'/PHPMailer/class.pop3.php');
-
 include_once(__DIR__ . '/../../../vendor/autoload.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -15,7 +14,7 @@ class Mail
     {
         $mail = new PHPMailer();
 
-        $mail->IsSMTP();
+        $mail->isSMTP();
 
 
         $body = file_get_contents(__DIR__.'/PHPMailer/template.html');
@@ -35,11 +34,9 @@ class Mail
         $mail->Username = $_ENV['MAIL_EMAIL']; // usuario gmail.   
         $mail->Password = $_ENV['MAIL_PASSWORD']; // senha do email.
 
-        $mail->SingleTo = true;
 
         // configuração do email a ver enviado.
-        $mail->From = $_ENV['MAIL_EMAIL'];
-        $mail->FromName = $_ENV['MAIL_NAME'];
+        $mail->setFrom($_ENV['MAIL_EMAIL'], $_ENV['MAIL_NAME']);
 
         $mail->addAddress($email); // email do destinatario.
 

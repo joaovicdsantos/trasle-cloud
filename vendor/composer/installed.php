@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ec8aa92071d5e69fd274baeeaa41ec9d4c757a69',
+    'reference' => '120b544e74d9ce32457a79d6b4f687156fd33bb0',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ec8aa92071d5e69fd274baeeaa41ec9d4c757a69',
+      'reference' => '120b544e74d9ce32457a79d6b4f687156fd33bb0',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -28,6 +28,15 @@
       array (
       ),
       'reference' => '7e279d2cd5d7fbb156ce46daada972355cea27bb',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.2.0',
+      'version' => '6.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e38888a75c070304ca5514197d4847a59a5c853f',
     ),
     'phpoption/phpoption' => 
     array (
