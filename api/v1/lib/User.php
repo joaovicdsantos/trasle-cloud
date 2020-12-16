@@ -8,9 +8,10 @@ class User
         $username = $body['username'];
         $company = $body['company'];
         $email = $body['email'];
+        $full_name = $body['full_name'];
         
-        if (!$username || !$company || !$email) {
-            return "Parameters are missing. Refer to the documentation.";
+        if (!$username || !$company || !$email || !$full_name) {
+            return 'Parameters are missing. Refer to the documentation.';
         }
 
         // Checking the email
@@ -20,7 +21,7 @@ class User
         $stmt->execute();
         $row_count = $stmt->rowCount();
         if ($row_count > 0) {
-            return "Email or Company already registered";
+            return 'Email or Company already registered';
         }
 
         // Generating api_key
@@ -29,8 +30,9 @@ class User
         $directory_name = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $company)));
 
         // Insert
-        $stmt = DB::prepare("INSERT INTO Users (Username, Company, Email, API_KEY, Directory) VALUES (:username, :company, :email, :api_key, :directory)");
+        $stmt = DB::prepare('INSERT INTO Users (Username, Full_Name, Company, Email, API_KEY, Directory) VALUES (:username, :full_name, :company, :email, :api_key, :directory)');
         $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':full_name', $full_name);
         $stmt->bindParam(':company', $company);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':api_key', $api_key);

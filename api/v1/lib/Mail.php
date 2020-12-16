@@ -16,11 +16,10 @@ class Mail
 
         $mail->isSMTP();
 
-
         $body = file_get_contents(__DIR__.'/PHPMailer/template.html');
+        $body = str_replace('%username%', ucfirst($name), $body);
         $body = str_replace('%api_key%', $api_key, $body);
-        $body = str_replace('%directory%', 'https://trasle-cloud.gq/cloud/'.$directory, $body);
-
+        $body = str_replace('%directory%', 'trasle-cloud.gq/cloud/'.$directory, $body);
 
         $mail->Port = '465';
         $mail->Host = 'smtp.gmail.com';
@@ -29,22 +28,17 @@ class Mail
         $mail->SMTPSecure = 'ssl';
         $mail->CharSet = 'UTF-8';
 
-        //configuração do usuário do gmail
         $mail->SMTPAuth = true;
-        $mail->Username = $_ENV['MAIL_EMAIL']; // usuario gmail.   
-        $mail->Password = $_ENV['MAIL_PASSWORD']; // senha do email.
+        $mail->Username = $_ENV['MAIL_EMAIL']; 
+        $mail->Password = $_ENV['MAIL_PASSWORD'];
 
-
-        // configuração do email a ver enviado.
         $mail->setFrom($_ENV['MAIL_EMAIL'], $_ENV['MAIL_NAME']);
-
-        $mail->addAddress($email); // email do destinatario.
-
-        $mail->Subject = "About your registration on api Trasle-Cloud";
+        $mail->addAddress($email);
+        $mail->Subject = 'About your registration on api Trasle-Cloud';
         $mail->MsgHTML($body);
 
         if (!$mail->Send()) {
-            echo "Erro ao enviar Email:" . $mail->ErrorInfo;
+            echo 'Error sending the e-mail. Please contact the developer';
         }
     }
 }

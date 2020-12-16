@@ -14,7 +14,7 @@ class File
 
         $row_count = $stmt->rowCount();
         if ($row_count == 0) {
-            return "Invalid API key.";
+            return 'Invalid API key.';
         }
 
         $files_upload = array();
