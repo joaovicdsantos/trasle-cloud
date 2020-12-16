@@ -19,7 +19,7 @@ class Rest
         $params = array();
         $params = $url;
 
-        $body = json_decode(file_get_contents("php://input"), true);
+        $body = json_decode(file_get_contents('php://input'), true);
         
         $post = $_POST;
         $files = $_FILES;

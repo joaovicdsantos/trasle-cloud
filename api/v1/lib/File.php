@@ -17,11 +17,13 @@ class File
             return "Invalid API key.";
         }
 
+        $files_upload = array();
         foreach ($files as $file) {
             move_uploaded_file($file['tmp_name'], '../../cloud/'.$res->Directory.'/'.$file['name']);
+            array_push($files_upload, array($file['name'] => '../../cloud/'.$res->Directory.'/'.$file['name']));
         }
 
-        return 'Saved files.';
+        return array('message' => 'Saved files.', 'files' => $files_upload);
 
     }
 }
