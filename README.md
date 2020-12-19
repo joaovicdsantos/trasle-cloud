@@ -1,4 +1,4 @@
-<p align="center"> <img alt="Trasle-Cloud Logo" src="https://i.ibb.co/qkBbF05/Trasle.png" height=150> </p>
+<p align="center"> <img alt="Trasle-Cloud Logo" src="https://i.ibb.co/1R57bBX/trasle-sem-fundo.png" height=150> </p>
 
 <h1 align="center">Trasle-Cloud</h1>
 Trasle-Cloud is simply an experimental cloud service that anyone can use. It is hosted on a server that is perhaps not very reliable and is therefore recommended for testing. Its use is extremely simple and without bureaucracy to facilitate the work of any developer.
