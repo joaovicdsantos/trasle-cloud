@@ -5,7 +5,7 @@ class Rest
     public static function open($request)
     {
         if (!$request['url']) {
-            return json_encode(array('status' => 'success', 'data' => 'API documentation: https://github.com/RaolootneXII/trasle-cloud/blob/main/README.md'));
+            return json_encode(array('status' => 'success', 'data' => 'API documentation: https://github.com/joaovicdsantos/trasle-cloud/blob/main/README.md'));
         }
 
         $url = explode('/', $request['url']);
